@@ -1,8 +1,8 @@
 # read-action
 
-![Test](https://github.com/katydecorah/read-action/workflows/Test/badge.svg?branch=main)
+![Test](https://github.com/mat-0/read-action/workflows/Test/badge.svg?branch=main)
 
-![.github/workflows/read.yml](https://github.com/katydecorah/read-action/workflows/.github/workflows/read.yml/badge.svg)
+![.github/workflows/read.yml](https://github.com/mat-0/read-action/workflows/.github/workflows/read.yml/badge.svg)
 
 This GitHub action tracks the books that you've read by updating the `_data/read.yml` file in your repository.
 
