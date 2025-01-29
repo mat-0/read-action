@@ -1,3 +1,5 @@
+name: Read
+
 on:
   issues:
     types: opened
