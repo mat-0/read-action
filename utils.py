@@ -1,14 +1,6 @@
 import isbnlib
 import yaml
 
-class CleanBook:
-    def __init__(self, title, authors, publisher, year, isbn):
-        self.title = title
-        self.authors = authors
-        self.publisher = publisher
-        self.year = year
-        self.isbn = isbn
-
 def title_parser(title):
     # Assuming the title format is "ISBN - Date"
     parts = title.split(' - ')
