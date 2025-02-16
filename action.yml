@@ -1,12 +1,22 @@
 name: Read
 description: Looks up books information given an issue with the title of an ISBN.
 runs:
-  using: node20
-  main: dist/index.js
+  using: composite
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: "3.x"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install PyGithub actions-toolkit isbnlib pyyaml
+    - name: Run Read Action
+      run: python src/index.py
 
 inputs:
   readFileName:
     description: The file where you want to save your books.
     default: _data/read.yml
   providers:
-    description: Specify the [ISBN providers](https://github.com/palmerabollo/node-isbn#setting-backend-providers) that you want to use, in the order you need them to be invoked. If setting more than one provider, separate each with a comma.
+    description: Specify the [ISBN providers](https://github.com/xlcnd/isbnlib#isbnlibmeta) that you want to use, in the order you need them to be invoked.
