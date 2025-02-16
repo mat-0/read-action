@@ -3,7 +3,7 @@ import sys
 import json
 from github import Github
 from actions_toolkit import core
-from utils import title_parser, get_book, return_write_file, CleanBook
+from utils import title_parser, get_book, return_write_file
 
 def read():
     try:
