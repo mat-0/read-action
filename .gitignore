@@ -1,1 +1,5 @@
 coverage
+.vscode
+.venv
+__pycache__
+*.pyc
