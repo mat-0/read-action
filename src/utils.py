@@ -11,7 +11,7 @@ class CleanBook:
 
 def title_parser(title):
     # Assuming the title format is "ISBN - Date"
-    parts = title.split(' - ')
+    parts = title.split(' ')
     if len(parts) < 2:
         return None, None
     book_isbn = parts[0]
