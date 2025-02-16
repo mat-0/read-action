@@ -8,7 +8,7 @@ runs:
       with:
         python-version: "3.x"
     - name: Cache dependencies
-      uses: actions/cache@v2
+      uses: actions/cache@v4
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
@@ -21,7 +21,7 @@ runs:
         pip install -r requirements.txt
     - name: Run Read Action
       shell: bash
-      run: python /src/index.py
+      run: python ./src/index.py
 
 inputs:
   readFileName:
