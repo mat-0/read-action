@@ -1,0 +1,4 @@
+PyGithub
+actions_toolkit
+yaml
+isbnlib
