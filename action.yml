@@ -21,7 +21,8 @@ runs:
         pip install -r requirements.txt
     - name: Run Read Action
       shell: bash
-      run: python ./src/index.py
+      run: python src/index.py
+      working-directory: ${{ github.workspace }}
 
 inputs:
   readFileName:
