@@ -1,8 +1,12 @@
 # read-action
 
+![Test](https://github.com/katydecorah/read-action/workflows/Test/badge.svg?branch=main)
+
+![.github/workflows/read.yml](https://github.com/katydecorah/read-action/workflows/.github/workflows/read.yml/badge.svg)
+
 This GitHub action tracks the books that you've read by updating the `_data/read.yml` file in your repository.
 
-Create a new issue with the book's ISBN in the title. The action will then fetch the book's metadata using [isbnlib](https://pypi.org/project/isbnlib/) and add it to `_data/read.yml` in your repository, always sorting by the date you finished the book.
+Create a new issue with the book's ISBN in the title. The action will then fetch the book's metadata using [node-isbn](https://www.npmjs.com/package/node-isbn) and add it to `_data/read.yml` in your repository, always sorting by the date you finished the book.
 
 ## Set up
 
@@ -24,16 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install PyGithub actions-toolkit isbnlib pyyaml
       - name: Read
-        run: python src/index.py
+        uses: katydecorah/read-action@v3.0.0
       - name: Download the book thumbnail
         run: curl "${{ env.BookThumb }}" -o "img/staging/${{ env.BookThumbOutput }}"
       - name: Commit files
@@ -56,7 +52,7 @@ jobs:
 <!-- START GENERATED OPTIONS -->
 
 - `readFileName`: The file where you want to save your books. Default: `_data/read.yml`.
-- `providers`: Specify the [ISBN providers](https://github.com/xlcnd/isbnlib#isbnlibmeta) that you want to use, in the order you need them to be invoked. If setting more than one provider, separate each with a comma.
+- `providers`: Specify the [ISBN providers](https://github.com/palmerabollo/node-isbn#setting-backend-providers) that you want to use, in the order you need them to be invoked. If setting more than one provider, separate each with a comma.
 
 <!-- END GENERATED OPTIONS -->
 

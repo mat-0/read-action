@@ -1,32 +1,13 @@
 name: Read
 description: Looks up books information given an issue with the title of an ISBN.
 runs:
-  using: composite
-  steps:
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.x"
-    - name: Cache dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Install dependencies
-      shell: bash
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run Read Action
-      shell: bash
-      run: python index.py
-      working-directory: ${{ github.workspace }}
+  using: node16
+  main: dist/index.js
 
 inputs:
   readFileName:
     description: The file where you want to save your books.
     default: _data/read.yml
   providers:
-    description: Specify the [ISBN providers](https://github.com/xlcnd/isbnlib#isbnlibmeta).
+    default: goob
+    description: Specify the [ISBN providers](https://github.com/palmerabollo/node-isbn#setting-backend-providers) that you want to use, in the order you need them to be invoked. If setting more than one provider, separate each with a comma.
